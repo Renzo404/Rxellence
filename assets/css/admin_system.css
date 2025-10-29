@@ -1,0 +1,139 @@
+.monitor-shell{
+  max-width: 1080px;
+  margin: clamp(16px,4vw,48px) auto;
+  padding: 18px;
+  background: linear-gradient(180deg,#f9fbf9,#f4f7f4);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius-lg) + 4px);
+  box-shadow: var(--shadow-1);
+}
+
+/* Top nav chips (Registration • Medicine Master List • Affiliation) */
+.monitor-tabs{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom: 10px; }
+.monitor-tabs .pill{ height: 36px; font-weight: 700; }
+
+/* Subtabs (System Monitoring • Analytics and Reports • User Management) */
+.monitor-subtabs{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px; }
+.monitor-subtabs .pill{ height: 34px; }
+
+/* Grid: left info cards + right table */
+.monitor-grid{
+  display:grid; gap:14px;
+  grid-template-columns: minmax(260px, 340px) 1fr;
+}
+@media (max-width: 900px){
+  .monitor-grid{ grid-template-columns: 1fr; }
+}
+
+/* Reusable side panel card */
+.panel{
+  background:#ffffff;
+  border:1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  box-shadow: var(--shadow-2);
+}
+
+/* Panel headings + tiny live dot */
+.panel h3{
+  margin:0 0 10px; font-size: 16px; font-weight: 900; color:#29473a;
+  display:flex; align-items:center; gap:10px;
+}
+.live-dot{
+  width:10px; height:10px; border-radius:50%;
+  background:#2f9b66; box-shadow: 0 0 0 3px rgba(47,155,102,.18);
+}
+
+/* Logs list */
+.logs-list{ margin:0; padding-left: 0; list-style:none; }
+.logs-list li{
+  display:flex; align-items:flex-start; gap:10px;
+  padding:8px 0; border-bottom:1px dashed #e6ebe7;
+}
+.logs-list li:last-child{ border-bottom:none; }
+
+.bullet{
+  flex:0 0 22px; height:22px; width:22px; border-radius:6px;
+  display:grid; place-items:center; color:#2b3d34; font-weight:900;
+  background:#eef5f1; border:1px solid #d9e7df;
+}
+
+/* Security panel styles */
+.panel.security{ background:#fbfdfa; border-style:dashed; }
+.panel.security h3{ color:#3d2f1e; }
+.security .bullet{
+  background:#fff8e1; border-color:#f2e3a8; color:#5c4605;
+}
+
+/* Period Toggle: Day | Week | Month */
+.period{
+  display:flex; align-items:center; gap:6px; justify-content:flex-end;
+  margin-bottom: 8px;
+}
+.seg{
+  height: 32px; padding: 0 12px; border-radius: 999px;
+  border:1px solid var(--border); background:#fff; color:#2d3a33;
+  font-weight: 800; cursor:pointer; transition: background .15s, border-color .15s, transform .15s;
+}
+.seg:hover{ background:#f7fbf8; border-color:#cfe7da; transform: translateY(-1px); }
+.seg.is-active{ background:#e7f3ec; border-color:#c6e1d2; color: var(--brand); }
+
+/* Log table wrapper */
+.logtable-wrap{
+  background:#fff; border:1px solid var(--border);
+  border-radius: var(--radius-lg); overflow:hidden; box-shadow: var(--shadow-2);
+}
+.logtable{
+  width:100%; border-collapse: collapse; font-size: 14.5px;
+}
+.logtable thead th{
+  position: sticky; top:0; z-index:1;
+  background:#f6faf7; color:#2f433a; text-align:left; font-weight:900;
+  padding:12px 14px; border-bottom:1px solid var(--border);
+}
+.logtable tbody td{
+  padding:12px 14px; border-bottom:1px solid #eff2ef; vertical-align: top;
+}
+.logtable tbody tr:hover{ background:#fbfdfa; }
+
+/* Sort indicators (optional) */
+.th-sort{
+  display:inline-flex; align-items:center; gap:6px; cursor:pointer;
+}
+.th-sort svg{ opacity:.55; }
+.th-sort:hover svg{ opacity:.9; }
+
+/* Small tags inside table details */
+.tag{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:4px 10px; border-radius:999px; border:1px solid #e5ece8;
+  background:#f7fbf9; color:#2a3a32; font-weight:800; font-size:12px;
+}
+.tag.success{ background:#e8f6ee; border-color:#cce9d7; color:var(--ok-ink); }
+.tag.warn{ background:#fff7d4; border-color:#f2e3a8; color:var(--warn-ink); }
+.tag.danger{ background:#ffe0e0; border-color:#f2c6c6; color:var(--bad-ink); }
+
+/* Table corner rounding for look in screenshot */
+.rounded-head th:first-child{ border-top-left-radius: 16px; }
+.rounded-head th:last-child{ border-top-right-radius: 16px; }
+
+/* Mobile stacking */
+@media (max-width: 760px){
+  .period{ justify-content:flex-start; }
+  .logtable thead{ display:none; }
+  .logtable, .logtable tbody, .logtable tr, .logtable td{ display:block; width:100%; }
+  .logtable tbody tr{ border-bottom:1px solid #eef1ee; padding:10px 12px; }
+  .logtable tbody td{ border:none; padding:6px 0; }
+  .logtable tbody td[data-label]::before{
+    content: attr(data-label);
+    display:block; font-weight:900; color:var(--muted); margin-bottom:2px;
+  }
+}
+
+/* Micro spinner next to section titles (optional) */
+.spinner{
+  width:14px; height:14px; border-radius:50%;
+  border: 2px solid #d7e6de; border-left-color: var(--accent);
+  animation: spin 1s linear infinite;
+}
+@keyframes spin{ to { transform: rotate(360deg); } }
