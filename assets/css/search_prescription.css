@@ -1,0 +1,203 @@
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400; /* 400 is 'normal' */
+  src: url('../fonts/Poppins-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700; /* 700 is 'bold' */
+  src: url('../fonts/Poppins-Bold.ttf') format('truetype');
+}
+
+:root{
+    --bg:#f3efe8;
+    --panel:#e9efe8;
+    --accent:#D9E9CF;
+    --accent-2:#1f6a54;
+    --muted:#9aa09a;
+    --card-bg:#f7f6f2;
+    --white:#ffffff;
+    --danger:#e37b7b;
+    --shadow: 0 6px 18px rgba(15,30,25,0.12);
+    --radius-outer:50px;
+  }
+
+  html,body{
+    height:100%;
+    margin:0;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* page container */
+  .page {
+    min-height:100vh;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding:36px;
+    box-sizing:border-box;
+  }
+
+  /* main panel */
+  .panel {
+    width:100%;
+    max-width:1100px;
+    background:var(--card-bg);
+    border-radius:var(--radius-outer);
+    padding:22px 28px;
+  }
+
+  /* top search row */
+  .search-row {
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:18px;
+  }
+  .search-row input[type="text"]{
+    flex:1;
+    padding:10px 14px;
+    border-radius:20px;
+    border:1px solid #d9d9d3;
+    outline:none;
+    background:var(--white);
+    font-size:14px;
+  }
+  .btn {
+    padding:8px 16px;
+    border-radius:18px;
+    border:none;
+    background:var(--accent);
+    color:var(--accent-2);
+    cursor:pointer;
+    font-weight:600;
+    border:1px solid var(--accent-2);
+  }
+  .btn.secondary {
+    background:transparent;
+    color:var(--accent-2);
+    border:1px solid #d6e3d8;
+    font-weight:600;
+  }
+
+  hr.sep {
+    border:none;
+    border-top:1px solid rgba(0,0,0,0.06);
+    margin:12px 0 20px 0;
+  }
+
+  /* patient header */
+  .patient-header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    margin-bottom:12px;
+  }
+  .patient-title {
+    font-size:18px;
+    font-weight:700;
+  }
+  .patient-sub {
+    color:var(--muted);
+    font-size:13px;
+  }
+
+  /* prescription table */
+  .table {
+    width:100%;
+    border-collapse:collapse;
+    background:transparent;
+    border-radius:12px;
+    overflow:hidden;
+  }
+  .table thead tr {
+    background:#e2efe6;
+  }
+  .table th, .table td {
+    text-align:left;
+    padding:12px 14px;
+    font-size:14px;
+    border-bottom:1px solid rgba(0,0,0,0.03);
+  }
+  .table th { color:var(--accent-2); font-weight:700; font-size:13px;}
+  .table tbody tr:hover { background:#fbfcfb; }
+
+  .small-muted { color:var(--muted); font-size:12px; }
+
+  /* item to use box */
+  .item-cell {
+    font-size:13px;
+    color:#2b4b3b;
+  }
+  .item-cell .meta { display:block; font-size:12px; color:var(--muted); margin-top:6px; }
+
+  .select-inv {
+    background:transparent;
+    border:1px solid #cfe1d3;
+    padding:6px 8px;
+    border-radius:8px;
+    cursor:pointer;
+    color:var(--accent-2);
+    font-weight:600;
+  }
+  .qty-input {
+    width:70px;
+    padding:6px 8px;
+    border-radius:8px;
+    border:1px solid #e0e0da;
+  }
+
+  .confirm-row {
+    display:flex;
+    justify-content:flex-end;
+    margin-top:14px;
+  }
+
+  /* modal */
+  .modal-backdrop {
+    position:fixed;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:200;
+    background:rgba(5,10,8,0.45);
+    padding:20px;
+    box-sizing:border-box;
+  }
+  .modal {
+    width:100%;
+    max-width:700px;
+    background:var(--white);
+    border-radius:14px;
+    padding:18px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.25);
+  }
+  .modal h3 { margin:0 0 10px 0; font-size:18px; }
+  .modal .modal-search {
+    display:flex;
+    gap:10px;
+    margin-bottom:12px;
+  }
+  .modal .modal-search input[type="text"]{
+    flex:1;
+    padding:8px 10px;
+    border-radius:12px;
+    border:1px solid #e3e3de;
+  }
+  .modal table{ width:100%; border-collapse:collapse; margin-top:6px;}
+  .modal table th, .modal table td{ text-align:left; padding:8px 10px; font-size:13px; border-bottom:1px solid #f0f0ef;}
+  .modal .batch-check { transform:scale(1.05); margin-right:8px; }
+  .modal .actions { display:flex; justify-content:flex-end; gap:8px; margin-top:12px; }
+  .badge { padding:6px 8px; border-radius:8px; background:#f2f8f3; font-size:12px; color:var(--muted); }
+
+  /* responsive */
+  @media (max-width:720px){
+    .panel { padding:14px; border-radius:24px; }
+    .table th, .table td { padding:8px; font-size:13px; }
+    .qty-input { width:58px; }
+  }

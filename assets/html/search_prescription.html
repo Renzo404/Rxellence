@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Prescription Dispense UI (Demo)</title>
+<link rel="stylesheet" href="../css/search_prescription.css" />
+</head>
+<body>
+<div class="page">
+  <div class="panel" role="main" aria-labelledby="title">
+    <div class="search-row" style="margin-bottom:8px;">
+      <input id="presIdInput" type="text" placeholder="Prescription ID:" aria-label="Prescription ID">
+      <button id="findBtn" class="btn">Find Prescription</button>
+      <button id="clearBtn" class="btn secondary">Clear</button>
+    </div>
+
+    <hr class="sep">
+
+    <!-- Patient & Prescription area -->
+    <div id="resultArea" aria-live="polite">
+      <!-- Populated by JS -->
+    </div>
+
+    <div style="height:6px;"></div>
+  </div>
+</div>
+
+<!-- Modal backdrop -->
+<div id="modalBackdrop" class="modal-backdrop" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+      <h3 id="modalTitle">Select Item from Inventory</h3>
+      <button id="modalClose" title="Close" class="btn secondary">✕</button>
+    </div>
+
+    <div class="modal-search">
+      <input id="modalSearch" type="text" placeholder="Search medicine name..." aria-label="Search medicine">
+      <button id="modalSearchBtn" class="btn secondary">Search</button>
+    </div>
+
+    <div style="max-height:360px; overflow:auto;">
+      <table id="modalTable" aria-describedby="modalTitle">
+        <thead>
+          <tr><th></th><th>ID</th><th>Exp</th><th>Stocks</th><th>Qty to take</th></tr>
+        </thead>
+        <tbody>
+          <!-- Batch rows here -->
+        </tbody>
+      </table>
+    </div>
+
+    <div class="actions">
+      <button id="modalCancel" class="btn secondary">Cancel</button>
+      <button id="modalConfirm" class="btn">Confirm</button>
+    </div>
+  </div>
+</div>
+<script src="../js/search_prescription.js"></script>
+</body>
+</html>
