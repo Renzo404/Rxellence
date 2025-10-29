@@ -1,0 +1,169 @@
+.analytics-shell{
+  max-width: 1080px;
+  margin: clamp(16px,4vw,48px) auto;
+  padding: 18px;
+  background: linear-gradient(180deg,#f9fbf9,#f4f7f4);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius-lg) + 4px);
+  box-shadow: var(--shadow-1);
+}
+
+/* Top nav chips (Registration • Medicine Master List • Affiliation) */
+.analytics-tabs{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px; }
+.analytics-tabs .pill{ height:36px; font-weight:700; }
+
+/* Section tabs (System Monitoring • Analytics & Reports • User Management) */
+.analytics-subtabs{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px; }
+.analytics-subtabs .pill{ height:34px; }
+
+/* Period toggle (Month | Quarter | Year) */
+.segmented{
+  display:flex; gap:6px; justify-content:flex-end; align-items:center;
+  margin-bottom: 10px;
+}
+.segmented .seg{
+  height: 32px; padding: 0 12px; border-radius: 999px;
+  border:1px solid var(--border); background:#fff; color:#2d3a33;
+  font-weight: 800; cursor:pointer; transition: background .15s, border-color .15s, transform .15s;
+}
+.segmented .seg:hover{ background:#f7fbf8; border-color:#cfe7da; transform: translateY(-1px); }
+.segmented .seg.is-active{ background:#e7f3ec; border-color:#c6e1d2; color: var(--brand); }
+
+/* Grid: main chart + right column + lower charts */
+.ar-grid{
+  display:grid; gap:14px;
+  grid-template-columns: 1.2fr .8fr;
+}
+@media (max-width: 980px){
+  .ar-grid{ grid-template-columns: 1fr; }
+}
+
+/* Card base */
+.card{
+  background:#ffffff;
+  border:1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-2);
+  padding: 14px 16px;
+}
+.card h4{
+  margin:0 0 12px; font-size: 16px; font-weight: 900; color:#29473a;
+  display:flex; align-items:center; gap:8px;
+}
+.card .hint{ color: var(--muted); font-weight:700; }
+
+/* Table-like list inside “Prescription Trends” (left) */
+.list-rows{ margin:0; padding:0; list-style:none; }
+.list-rows li{
+  display:grid; grid-template-columns: 1fr 80px;
+  gap:10px; align-items:center;
+  padding:8px 0; border-bottom:1px dashed #e6ebe7;
+}
+.list-rows li:last-child{ border-bottom:none; }
+.bar{
+  height:10px; border-radius:999px; background:#e9f3ee; overflow:hidden; position:relative;
+}
+.bar > i{
+  position:absolute; inset:0; width:var(--w,55%);
+  background: linear-gradient(90deg,#2e7d5b,#43a079);
+}
+
+/* Right-column donut summary */
+.donut{
+  --size: 180px;
+  width: var(--size); height: var(--size);
+  margin: 8px auto 8px;
+  border-radius: 50%;
+  background:
+    conic-gradient(
+      #43a079 var(--a1,40%),
+      #0f6a44 0 var(--a2,70%),
+      #cfe7da 0
+    );
+  -webkit-mask: radial-gradient(circle 60% at 50% 50%, transparent 61%, #000 62%);
+          mask: radial-gradient(circle 60% at 50% 50%, transparent 61%, #000 62%);
+  box-shadow: inset 0 0 0 1px #e7eee9;
+}
+.legend{ margin-top: 10px; }
+.legend ul{ list-style:none; margin:0; padding:0; }
+.legend li{
+  display:flex; align-items:center; gap:10px; padding:6px 0;
+}
+.swatch{
+  width:12px; height:12px; border-radius:3px; background:#43a079; border:1px solid rgba(0,0,0,.06);
+}
+.swatch.alt{ background:#0f6a44; }
+.swatch.muted{ background:#cfe7da; }
+.legend .name{ font-weight:800; color:#2a3a32; }
+.legend .meta{ margin-left:auto; color:var(--muted); font-weight:800; }
+
+/* Lower 3 mini-cards grid (User Registration, Most Active Doctors, Most Active Pharmacies) */
+.mini-grid{
+  margin-top: 14px;
+  display:grid; gap:14px;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+}
+@media (max-width: 900px){
+  .mini-grid{ grid-template-columns: 1fr; }
+}
+
+/* Small donut style for mini cards */
+.donut-sm{
+  --size: 120px;
+  width: var(--size); height: var(--size); margin: 4px 0 8px;
+  border-radius:50%;
+  background: conic-gradient(#43a079 55%, #0f6a44 0 80%, #cfe7da 0);
+  -webkit-mask: radial-gradient(circle 60% at 50% 50%, transparent 61%, #000 62%);
+          mask: radial-gradient(circle 60% at 50% 50%, transparent 61%, #000 62%);
+  box-shadow: inset 0 0 0 1px #e7eee9;
+}
+
+/* Tiny bullet row list (doctor/pharmacy names) */
+.bullets{ list-style:none; padding:0; margin:0; }
+.bullets li{
+  display:flex; align-items:center; gap:10px; padding:6px 0;
+}
+.dot{
+  width:8px; height:8px; border-radius:50%; background:#2e7d5b;
+  box-shadow: 0 0 0 3px rgba(46,125,91,.12);
+}
+.bullets .name{ font-weight:800; color:#25362f; }
+.bullets .meta{ margin-left:auto; color: var(--muted); font-weight:800; }
+
+/* Tiny “filter/region/time” pop chip and kebab btns (visual only) */
+.kebab, .chip{
+  height: 28px; padding: 0 10px; border-radius: 999px;
+  border:1px solid var(--border); background:#fff; color:#33463d; font-weight:800;
+  display:inline-flex; align-items:center; gap:8px; cursor:pointer;
+  transition: background .15s, border-color .15s, transform .15s;
+}
+.kebab:hover, .chip:hover{ background:#f7fbf8; border-color:#cfe7da; transform: translateY(-1px); }
+.kebab{ width: 28px; padding:0; justify-content:center; }
+
+/* Tooltip (for tiny ⓘ icons or sort hint) */
+.tooltip{
+  position:relative; display:inline-flex; align-items:center; gap:6px;
+  color:#5b6a61; font-weight:800; cursor:help;
+}
+.tooltip:hover::after{
+  content: attr(data-tip);
+  position:absolute; left:50%; top: calc(100% + 8px); transform: translateX(-50%);
+  white-space:nowrap; padding:6px 10px; border-radius:8px;
+  background:#122b1f; color:#eaf3ed; font-size:12px; font-weight:700;
+  box-shadow: 0 6px 20px rgba(0,0,0,.18);
+}
+
+/* Helper layout for a chart card with header controls */
+.card-head{
+  display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px;
+}
+.card-actions{ display:flex; gap:8px; align-items:center; }
+
+/* Make big card corners like in screenshot */
+.card.rounded{ border-radius: 22px; }
+
+/* Responsive headings spacing */
+@media (max-width: 520px){
+  .card h4{ font-size: 15px; }
+  .legend .meta, .bullets .meta{ font-size: 12px; }
+}
