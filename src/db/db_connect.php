@@ -42,8 +42,6 @@ if (!$conn->set_charset("utf8mb4")) {
     // printf("Error loading character set utf8mb4: %s\n", $conn->error);
 }
 
-// Optional: Uncomment the line below for testing to confirm a successful connection.
-// Make sure to remove or comment it out in production.
 echo "Connected successfully";
 
 
